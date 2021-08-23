@@ -12,3 +12,8 @@ A playlist manager for Spotify
 - [ ] UI
 - [ ] API
   - [x] Endpoint to handle authorization code flow
+
+## Development Stack
+
+- React
+- Express
