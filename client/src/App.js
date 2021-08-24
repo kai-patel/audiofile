@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import react from 'react';
+import { Container, Button } from '@material-ui/core';
+import axios from 'axios';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const handleLogin = (e) => {
+    e.preventDefault();
+    console.log("Clicked!");
+}
+
+const App = () => {
+    return (
+            <div style={{"width": "100%", "height": "100%"}}>
+            <Container>
+            <Button variant="contained" color="primary" size="large" onClick={handleLogin}>
+            Login
+        </Button>
+            </Container>
+            </div>
+    );
 }
 
 export default App;
