@@ -16,7 +16,7 @@ app.use('/', (req, res) => {
 });
 
 // Handle authorization code flow with Spotify
-app.post('/authorize', (req, res) => {
+app.post('/login', (req, res) => {
     const token = req.body.token;
     const spotifyApi = new SpotifyWebApi({
         clientId: CLIENT_ID,
