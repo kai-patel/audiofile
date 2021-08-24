@@ -2,9 +2,19 @@ import react from 'react';
 import { Container, Button } from '@material-ui/core';
 import axios from 'axios';
 
-const handleLogin = (e) => {
+const CLIENT_ID = process.env.CLIENT_ID || "";
+const REDIRECT_URI = process.env.REDIRECT_URI || "http://localhost:5000/authorize"
+const scopes = "user-read-private"
+const spotifyURI = "https://accounts.spotify.com/authorize?reponse_type=code" +
+      `&client_id=${CLIENT_ID}` +
+      `&scope=${encodeURIComponent(scopes)}` +
+      `&redirect_uri=${encodeURIComponent(REDIRECT_URI)}`;
+      
+const handleLogin = async (e) => {
     e.preventDefault();
     console.log("Clicked!");
+    let response = await axios.get(spotifyURI);
+    console.log(response);
 }
 
 const App = () => {
