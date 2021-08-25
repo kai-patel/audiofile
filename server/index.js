@@ -1,23 +1,22 @@
 import express from 'express';
 import cors from 'cors';
+import SpotifyWebApi from 'spotify-web-api-node';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const app = express();
 
 const PORT = process.env.PORT || 5000;
 const CLIENT_ID = process.env.CLIENT_ID || "";
 const CLIENT_SECRET = process.env.CLIENT_SECRET || "";
-const REDIRECT_URI = process.env.REDIRECT_URI || "http://localhost:5000/authorize";
+const REDIRECT_URI = process.env.REDIRECT_URI || "";
 
 app.use(cors());
 app.use(express.json());
 
-app.use('/', (req, res) => {
-    res.send("Hello!");
-});
-
 // Handle authorization code flow with Spotify
-app.post('/login', (req, res) => {
-    const token = req.body.token;
+app.get('/login', (req, res) => {
+    const token = req.query.code;
     const spotifyApi = new SpotifyWebApi({
         clientId: CLIENT_ID,
         clientSecret: CLIENT_SECRET,

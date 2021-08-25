@@ -1,38 +1,26 @@
-import react from 'react';
+import React from 'react';
 import { Box, Container, Button } from '@material-ui/core';
 import axios from 'axios';
 
-const CLIENT_ID = process.env.CLIENT_ID || "";
-const REDIRECT_URI = process.env.REDIRECT_URI || "http://localhost:5000/authorize"
-const API_URI = process.env.API_URI || "http://localhost:5000"
+const CLIENT_ID = "1a457bdb20ac4f9c81b53a9e37cb6568";
+const REDIRECT_URI = "http://localhost:5000/login"
+const API_URI = "http://localhost:5000"
+
 const scopes = "user-read-private"
-const spotifyURI = "https://accounts.spotify.com/authorize?reponse_type=code" +
-      `&client_id=${CLIENT_ID}` +
-      `&scope=${encodeURIComponent(scopes)}` +
-      `&redirect_uri=${encodeURIComponent(REDIRECT_URI)}`;
 
-// Handle auth -- retrieve tokens from api
-const handleLogin = async (e) => {
-    e.preventDefault();
-    console.log("Clicked!");
-
-    // Retrieve client code from Spotify
-    let { codeData } = await axios.get(spotifyURI);
-    console.log(codeData);
-
-    // Send client code to API, get back tokens
-    let { tokenData } = await axios.post(`${API_URI}/login`, { "code": codeData.code });
-    console.log(tokenData);
-
-}
+const spotifyURI = 'https://accounts.spotify.com/authorize' +
+      '?response_type=code' +
+      '&client_id=' + CLIENT_ID +
+      (scopes ? '&scope=' + encodeURIComponent(scopes) : '') +
+      '&redirect_uri=' + encodeURIComponent(REDIRECT_URI);
 
 const App = () => {
     return (
-        <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
-            <Button size="large" variant="contained" color="primary" onClick={handleLogin}>
-                Login
-            </Button>
-        </Box>
+            <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
+            <Button href={spotifyURI} size="large" variant="contained" color="primary">
+            Login
+        </Button>
+            </Box>
     );
 }
 
