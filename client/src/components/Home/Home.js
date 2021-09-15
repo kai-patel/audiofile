@@ -2,8 +2,10 @@ import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import SpotifyWebApi from "spotify-web-api-node";
+import { Box, Grid, Typography } from "@material-ui/core";
 
 import useAuth from "../../hooks/useAuth.js";
+import Playlists from "../Playlists/Playlists.js";
 
 const spotifyApi = new SpotifyWebApi({
     clientId: "1a457bdb20ac4f9c81b53a9e37cb6568",
@@ -26,7 +28,6 @@ const Home = ({ code }) => {
             function (data) {
                 setDisplayName(data.body.display_name);
                 setUserID(data.body.id);
-                console.log(data.body);
             },
             function (err) {
                 console.log("Something went wrong!", err);
@@ -39,19 +40,35 @@ const Home = ({ code }) => {
         if (!userID) return;
         spotifyApi.getUserPlaylists(userID).then(
             function (data) {
-                setPlaylists(data.body.items);
-                console.log(data);
+                let items = data.body.items;
+                setPlaylists(items);
             },
             function (err) {
                 console.log("Something went wrong!", err);
                 return null;
             }
         );
-    }, [userID]);
+    }, [userID, accessToken]);
+
+    useEffect(() => {
+        if (!playlists) return;
+        console.log("Playlists --- \n", playlists);
+    }, [playlists]);
+
+    useEffect(() => {
+        if (!playlists) return;
+        console.log("User Details --- \n", displayName, userID);
+    }, [displayName, userID]);
 
     if (!spotifyApi.getAccessToken()) return <h1>Not authenticated</h1>;
 
-    return <h4>Welcome {displayName}</h4>;
+    return (
+        <Box display="flex" justifyContent="center" alignItems="center">
+            <Typography variant="h4">Welcome {displayName}</Typography>
+            <Typography variant="body1">Playlists</Typography>
+            {playlists ? <Playlists playlists={playlists} /> : null}
+        </Box>
+    );
 };
 
 export default Home;
