@@ -18,9 +18,16 @@ const spotifyURI =
     encodeURIComponent(REDIRECT_URI);
 
 const Login = () => {
-    <Button href={spotifyURI} size="large" variant="contained" color="primary">
-        Login
-    </Button>;
+    return (
+        <Button
+            href={spotifyURI}
+            size="large"
+            variant="contained"
+            color="primary"
+        >
+            Login
+        </Button>
+    );
 };
 
 export default Login;
