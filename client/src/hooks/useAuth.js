@@ -10,19 +10,17 @@ function useAuth(code) {
 
     useEffect(() => {
         axios
-            .get("http://localhost:5000/login/", {
-                code,
-            })
+            .get("http://localhost:5000/login/", { params: { code } })
             .then((res) => {
                 setAccessToken(res.data.accessToken);
                 setRefreshToken(res.data.refreshToken);
                 setExpiresIn(res.data.expiresIn);
-                //window.history.pushState({}, null, "/");
+                window.history.pushState({}, null, "/");
                 console.log(accessToken);
             })
             .catch((err) => {
                 console.log(err);
-                //window.location = "/";
+                window.location = "/";
             });
     }, [code]);
 

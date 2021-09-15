@@ -11,7 +11,6 @@ const spotifyApi = new SpotifyWebApi({
 
 const Home = ({ code }) => {
     const accessToken = useAuth(code);
-    console.log(accessToken);
 
     return <h1>Welcome: {accessToken}</h1>;
 };
