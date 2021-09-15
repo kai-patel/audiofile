@@ -4,6 +4,8 @@ import { Box } from "@material-ui/core";
 import Login from "./components/Login/Login.js";
 import Home from "./components/Home/Home.js";
 
+let code = window.URLSearchParams(window.location.search).get("code");
+
 const App = () => {
     return (
         <Box
@@ -12,8 +14,7 @@ const App = () => {
             alignItems="center"
             minHeight="100vh"
         >
-            <Login />
-            <Home />
+            code ? <Home code={code} /> : <Login />
         </Box>
     );
 };
