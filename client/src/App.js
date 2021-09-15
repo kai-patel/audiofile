@@ -14,7 +14,7 @@ const App = () => {
             alignItems="center"
             minHeight="100vh"
         >
-            code ? <Home code={code} /> : <Login />
+            {code ? <Home code={code} /> : <Login />}
         </Box>
     );
 };
