@@ -6,9 +6,9 @@ A playlist manager for Spotify
 
 **Work in Progress**
 
-- [ ] User Auth
-  - [ ] Send user to Spotify to retrieve auth code
-  - [ ] Call API endpoint /authorize and retrieve tokens
+- [x] User Auth
+  - [x] Send user to Spotify to retrieve auth code
+  - [x] Call API endpoint /authorize and retrieve tokens
 - [ ] UI
 - [ ] API
   - [x] Endpoint to handle authorization code flow
@@ -17,3 +17,4 @@ A playlist manager for Spotify
 
 - React
 - Express
+- Spotify Web API Node (https://github.com/thelinmichael/spotify-web-api-node)
