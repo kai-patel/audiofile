@@ -4,9 +4,9 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 function useAuth(code) {
-    const [accessToken, setAccessToken] = useState("");
-    const [refreshToken, setRefreshToken] = useState("");
-    const [expiresIn, setExpiresIn] = useState("");
+    const [accessToken, setAccessToken] = useState();
+    const [refreshToken, setRefreshToken] = useState();
+    const [expiresIn, setExpiresIn] = useState();
 
     useEffect(() => {
         axios
@@ -16,7 +16,6 @@ function useAuth(code) {
                 setRefreshToken(res.data.refreshToken);
                 setExpiresIn(res.data.expiresIn);
                 window.history.pushState({}, null, "/");
-                console.log(accessToken);
             })
             .catch((err) => {
                 console.log(err);
