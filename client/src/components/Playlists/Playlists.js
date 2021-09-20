@@ -8,19 +8,17 @@ import {
     ListItemAvatar,
     Grid,
     Typography,
-    Checkbox
+    Checkbox,
 } from "@material-ui/core";
 
-const Playlists = ({ playlists }) => {
+const Playlists = ({ playlists, handleCheckboxChange }) => {
     const elems = playlists.map((playlist) => (
         <ListItem key={playlist.name}>
             <ListItemAvatar>
                 <Avatar src={playlist?.images[1]?.url} />
             </ListItemAvatar>
             <ListItemText primary={playlist.name} />
-            <Checkbox
-                edge="end"
-            />
+            <Checkbox edge="end" onChange={handleCheckboxChange(playlist.id)} />
         </ListItem>
     ));
 
