@@ -6,6 +6,7 @@ import { Box, Grid, Typography } from "@material-ui/core";
 
 import useAuth from "../../hooks/useAuth.js";
 import Playlists from "../Playlists/Playlists.js";
+import Songs from "../Songs/Songs.js";
 
 const spotifyApi = new SpotifyWebApi({
     clientId: "1a457bdb20ac4f9c81b53a9e37cb6568",
@@ -63,10 +64,23 @@ const Home = ({ code }) => {
     if (!spotifyApi.getAccessToken()) return <h1>Not authenticated</h1>;
 
     return (
-        <Box display="flex" justifyContent="center" alignItems="center">
-            <Typography variant="h4">Welcome {displayName}</Typography>
-            <Typography variant="body1">Playlists</Typography>
-            {playlists ? <Playlists playlists={playlists} /> : null}
+        <Box>
+            <Grid
+                container
+                spacing={4}
+                alignItems="center"
+                justifyContent="center"
+            >
+                <Typography variant="h5">Welcome {displayName}</Typography>
+                <Grid container item spacing={2}>
+                    <Grid item>
+                        {playlists ? <Playlists playlists={playlists} /> : null}
+                    </Grid>
+                    <Grid item>
+                        <Songs />
+                    </Grid>
+                </Grid>
+            </Grid>
         </Box>
     );
 };

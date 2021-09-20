@@ -1,27 +1,45 @@
 import React, { useEffect } from "react";
-import { Grid, Card, CardContent, Typography } from "@material-ui/core";
+import {
+    Paper,
+    Avatar,
+    List,
+    ListItem,
+    ListItemText,
+    ListItemAvatar,
+    Grid,
+    Typography,
+    Checkbox
+} from "@material-ui/core";
 
 const Playlists = ({ playlists }) => {
     const elems = playlists.map((playlist) => (
-        <Grid item xs key={playlist.name}>
-            <Card>
-                <CardContent>
-                    <Typography variant="body2">{playlist.name}</Typography>
-                </CardContent>
-            </Card>
-        </Grid>
+        <ListItem key={playlist.name}>
+            <ListItemAvatar>
+                <Avatar src={playlist?.images[1]?.url} />
+            </ListItemAvatar>
+            <ListItemText primary={playlist.name} />
+            <Checkbox
+                edge="end"
+            />
+        </ListItem>
     ));
 
     return (
-        <Grid
-            container
-            direction="column"
-            justifyContent="center"
-            alignItems="center"
-            spacing={1}
-        >
-            {elems}
-        </Grid>
+        <Paper>
+            <Grid
+                container
+                direction="column"
+                alignItems="center"
+                justifyContent="center"
+            >
+                <Grid item>
+                    <Typography variant="h6">Playlists</Typography>
+                </Grid>
+                <Grid item>
+                    <List dense={true}>{elems}</List>
+                </Grid>
+            </Grid>
+        </Paper>
     );
 };
 
