@@ -86,7 +86,6 @@ const Home = ({ code }) => {
         for (let playlist of chosenPlaylists) {
             getTracks(playlist).then(
                 function (data) {
-                    console.log("New tracks:", data);
                     setSongs([...songs, ...data]);
                 },
                 function (err) {
@@ -128,7 +127,7 @@ const Home = ({ code }) => {
                         ) : null}
                     </Grid>
                     <Grid item>
-                        <Songs songs={songs}/>
+                        {songs.length > 0 ? <Songs songs={songs} /> : null}
                     </Grid>
                 </Grid>
             </Grid>

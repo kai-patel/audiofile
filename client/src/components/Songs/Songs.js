@@ -5,18 +5,24 @@ import {
     ListItemText,
     Paper,
     Typography,
+    Divider,
 } from "@material-ui/core";
 
 const Songs = ({ songs }) => {
     const elems = songs.map(({ track }, index) => (
-        <ListItem key={index}>
-            <ListItemText primary={track.name} />
-        </ListItem>
+        <React.Fragment key={index}>
+            <ListItem>
+                <ListItemText primary={track.name} />
+            </ListItem>
+            <Divider variant="fullWidth" component="li" />
+        </React.Fragment>
     ));
 
     return (
-        <Paper>
-            <Typography variant="h6">Songs</Typography>
+        <Paper square variant="outlined">
+            <Typography align="center" variant="h6">
+                Songs
+            </Typography>
             <List dense={true}>{elems}</List>
         </Paper>
     );
