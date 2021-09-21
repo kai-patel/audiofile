@@ -3,7 +3,7 @@
 A playlist manager for Spotify
 
 ## Development Status
-s
+
 **Work in Progress**
 
 - [x] User Auth
