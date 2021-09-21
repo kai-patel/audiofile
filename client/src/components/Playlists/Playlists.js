@@ -15,7 +15,7 @@ const Playlists = ({ playlists, handleCheckboxChange }) => {
     const elems = playlists.map((playlist) => (
         <ListItem key={playlist.name}>
             <ListItemAvatar>
-                <Avatar src={playlist?.images[1]?.url} />
+                <Avatar variant="square" src={playlist?.images[1]?.url} />
             </ListItemAvatar>
             <ListItemText primary={playlist.name} />
             <Checkbox edge="end" onChange={handleCheckboxChange(playlist.id)} />
@@ -29,6 +29,7 @@ const Playlists = ({ playlists, handleCheckboxChange }) => {
                 direction="column"
                 alignItems="center"
                 justifyContent="center"
+                spacing={2}
             >
                 <Grid item>
                     <Typography variant="h6">Playlists</Typography>
