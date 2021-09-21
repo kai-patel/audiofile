@@ -8,12 +8,9 @@ import {
 } from "@material-ui/core";
 
 const Songs = ({ songs }) => {
-    let tracks = songs.map((song) => song.track.name);
-    let songsSet = new Set(tracks);
-
-    const elems = [...songsSet].map((track) => (
-        <ListItem key={track}>
-            <ListItemText primary={track} />
+    const elems = songs.map(({ track }, index) => (
+        <ListItem key={index}>
+            <ListItemText primary={track.name} />
         </ListItem>
     ));
 
