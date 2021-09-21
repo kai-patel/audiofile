@@ -23,6 +23,7 @@ const Songs = ({ songs }) => {
             <Typography align="center" variant="h6">
                 Songs
             </Typography>
+            <Divider variant="fullWidth" component="ul" />
             <List dense={true} style={{ maxHeight: "100vh", overflow: "auto" }}>
                 {elems}
             </List>
