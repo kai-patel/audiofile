@@ -23,7 +23,9 @@ const Songs = ({ songs }) => {
             <Typography align="center" variant="h6">
                 Songs
             </Typography>
-            <List dense={true}>{elems}</List>
+            <List dense={true} style={{ maxHeight: "100vh", overflow: "auto" }}>
+                {elems}
+            </List>
         </Paper>
     );
 };

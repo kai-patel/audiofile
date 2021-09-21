@@ -116,8 +116,16 @@ const Home = ({ code }) => {
                 alignItems="center"
                 justifyContent="center"
             >
-                <Typography variant="h5">Welcome {displayName}</Typography>
-                <Grid container item spacing={2}>
+                <Grid item>
+                    <Typography variant="h5">Welcome {displayName}</Typography>
+                </Grid>
+                <Grid
+                    container
+                    item
+                    spacing={2}
+                    alignItems="flex-start"
+                    justifyContent="flex-start"
+                >
                     <Grid item>
                         {playlists ? (
                             <Playlists
