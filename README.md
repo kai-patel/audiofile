@@ -4,7 +4,7 @@ A playlist manager for Spotify
 
 ## Development Status
 
-**Work in Progress**
+This project is still a **Work in Progress**
 
 - [x] User Auth
   - [x] Send user to Spotify to retrieve auth code
@@ -20,4 +20,4 @@ A playlist manager for Spotify
 
 - React
 - Express
-- Spotify Web API Node (https://github.com/thelinmichael/spotify-web-api-node)
+- Spotify Web API Node (<https://github.com/thelinmichael/spotify-web-api-node>)
