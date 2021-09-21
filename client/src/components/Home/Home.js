@@ -109,7 +109,7 @@ const Home = ({ code }) => {
     if (!spotifyApi.getAccessToken()) return <h1>Not authenticated</h1>;
 
     return (
-        <Box>
+        <Box mt={4}>
             <Grid
                 container
                 spacing={4}
@@ -117,7 +117,7 @@ const Home = ({ code }) => {
                 justifyContent="center"
             >
                 <Grid item>
-                    <Typography variant="h5">Welcome {displayName}</Typography>
+                    <Typography variant="h4">Welcome {displayName}</Typography>
                 </Grid>
                 <Grid
                     container

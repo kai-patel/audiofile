@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import { ThemeProvider, createTheme } from "@material-ui/core/styles";
+import { CssBaseline } from "@material-ui/core";
 
 const theme = createTheme({
     palette: {
@@ -12,6 +13,7 @@ const theme = createTheme({
 ReactDOM.render(
     <React.StrictMode>
         <ThemeProvider theme={theme}>
+            <CssBaseline />
             <App />
         </ThemeProvider>
     </React.StrictMode>,
