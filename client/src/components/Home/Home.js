@@ -109,37 +109,18 @@ const Home = ({ code }) => {
     if (!spotifyApi.getAccessToken()) return <h1>Not authenticated</h1>;
 
     return (
-        <Box mt={4}>
-            <Grid
-                container
-                spacing={4}
-                alignItems="center"
-                justifyContent="center"
-            >
-                <Grid item>
-                    <Typography variant="h4">Welcome {displayName}</Typography>
-                </Grid>
-                <Grid
-                    container
-                    item
-                    spacing={2}
-                    alignItems="flex-start"
-                    justifyContent="flex-start"
-                >
-                    <Grid item>
-                        {playlists ? (
-                            <Playlists
-                                playlists={playlists}
-                                handleCheckboxChange={handleCheckboxChange}
-                            />
-                        ) : null}
-                    </Grid>
-                    <Grid item>
-                        {songs.length > 0 ? <Songs songs={songs} /> : null}
-                    </Grid>
-                </Grid>
-            </Grid>
-        </Box>
+        <div className="container grid grid-cols-1 place-items-center w-screen h-screen mx-auto my-auto">
+            <h1>Welcome {displayName}</h1>
+            <div className="container grid grid-cols-2 mx-auto my-auto">
+                {playlists ? (
+                    <Playlists
+                        playlists={playlists}
+                        handleCheckboxChange={handleCheckboxChange}
+                    />
+                ) : null}
+                {songs.length > 0 ? <Songs songs={songs} /> : null}
+            </div>
+        </div>
     );
 };
 
