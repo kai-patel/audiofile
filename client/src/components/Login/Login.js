@@ -17,14 +17,14 @@ const spotifyURI =
 
 const Login = () => {
     return (
-        <Button
-            href={spotifyURI}
-            size="large"
-            variant="contained"
-            color="primary"
-        >
-            Login
-        </Button>
+        <div className="container grid place-items-center w-screen h-screen mx-auto my-auto p-10">
+            <a
+                href={spotifyURI}
+                className="px-4 py-2 text-lg bg-green-500 text-white rounded-lg"
+            >
+                Login
+            </a>
+        </div>
     );
 };
 
