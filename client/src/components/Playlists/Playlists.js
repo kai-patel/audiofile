@@ -23,22 +23,10 @@ const Playlists = ({ playlists, handleCheckboxChange }) => {
     ));
 
     return (
-        <Paper>
-            <Grid
-                container
-                direction="column"
-                alignItems="center"
-                justifyContent="center"
-                spacing={2}
-            >
-                <Grid item>
-                    <Typography variant="h6">Playlists</Typography>
-                </Grid>
-                <Grid item>
-                    <List dense={true}>{elems}</List>
-                </Grid>
-            </Grid>
-        </Paper>
+        <div className="container grid grid-cols-1 mx-auto my-auto">
+            <h1>Playlists</h1>
+            {elems}
+        </div>
     );
 };
 
