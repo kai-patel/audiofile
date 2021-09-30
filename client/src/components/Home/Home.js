@@ -109,7 +109,7 @@ const Home = ({ code }) => {
     if (!spotifyApi.getAccessToken()) return <h1>Not authenticated</h1>;
 
     return (
-        <div className="container grid grid-cols-1 place-items-center w-screen h-screen mx-auto my-auto">
+        <div className="grid grid-cols-1 place-items-center w-screen h-screen mx-auto my-auto bg-gray-600">
             <h1>Welcome {displayName}</h1>
             <div className="container grid grid-cols-2 mx-auto my-auto">
                 {playlists ? (
