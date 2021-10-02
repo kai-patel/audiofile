@@ -1,15 +1,4 @@
 import React, { useEffect } from "react";
-import {
-    Paper,
-    Avatar,
-    List,
-    ListItem,
-    ListItemText,
-    ListItemAvatar,
-    Grid,
-    Typography,
-    Checkbox,
-} from "@material-ui/core";
 
 const Playlists = ({ playlists, handleCheckboxChange }) => {
     // const elems = playlists.map((playlist) => (
@@ -22,8 +11,8 @@ const Playlists = ({ playlists, handleCheckboxChange }) => {
     //     </ListItem>
     // ));
 
-    const elems = playlists.map((playlist) => (
-        <li className="flex flex-row justify-between items-center h-10 mx-0 my-4">
+    const elems = playlists.map((playlist, index) => (
+        <li className="flex flex-row justify-between items-center h-10 mx-0 my-4" key={index}>
             <img className="h-10" src={playlist?.images[0]?.url} alt="" />
             <h1 className="mx-4 font-sans text-base">{playlist.name}</h1>
             <input

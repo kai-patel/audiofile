@@ -1,8 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import SpotifyWebApi from "spotify-web-api-node";
-import { Box, Grid, Typography } from "@material-ui/core";
 
 import useAuth from "../../hooks/useAuth.js";
 import Playlists from "../Playlists/Playlists.js";

@@ -1,5 +1,4 @@
 import React from "react";
-import { Button } from "@material-ui/core";
 
 const CLIENT_ID = "1a457bdb20ac4f9c81b53a9e37cb6568";
 const REDIRECT_URI = "http://localhost:3000";
