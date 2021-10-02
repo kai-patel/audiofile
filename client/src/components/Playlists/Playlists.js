@@ -23,9 +23,9 @@ const Playlists = ({ playlists, handleCheckboxChange }) => {
     // ));
 
     const elems = playlists.map((playlist) => (
-        <li className="flex flex-row justify-start items-center h-10 mx-auto my-auto">
+        <li className="flex flex-row justify-between items-center h-10 mx-0 my-4">
             <img className="h-10" src={playlist?.images[0]?.url} alt="" />
-            <h1>{playlist.name}</h1>
+            <h1 className="mx-4 font-sans text-base">{playlist.name}</h1>
             <input
                 type="checkbox"
                 onChange={handleCheckboxChange(playlist.id)}
@@ -34,8 +34,8 @@ const Playlists = ({ playlists, handleCheckboxChange }) => {
     ));
 
     return (
-        <div className="grid grid-cols-1 mx-auto my-auto">
-            <h1>Playlists</h1>
+        <div className="grid grid-cols-1 mx-auto my-auto bg-green-800 shadow-xl rounded p-4">
+            <h1 className="font-sans font-medium text-lg justify-self-center">Playlists</h1>
             <ul>{elems}</ul>
         </div>
     );

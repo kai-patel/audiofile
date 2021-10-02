@@ -17,7 +17,7 @@ const spotifyURI =
 
 const Login = () => {
     return (
-        <div className="grid place-items-center w-screen h-screen mx-0 my-0 bg-gray-600">
+        <div className="grid place-items-center w-screen h-screen mx-0 my-0 bg-gray-900">
             <a
                 href={spotifyURI}
                 className="px-4 py-2 text-lg bg-green-500 text-white rounded-lg shadow"
