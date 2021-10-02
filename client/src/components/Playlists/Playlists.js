@@ -23,7 +23,7 @@ const Playlists = ({ playlists, handleCheckboxChange }) => {
     ));
 
     return (
-        <div className="grid grid-cols-1 mx-auto my-auto bg-green-800 shadow-xl rounded p-4">
+        <div className="grid grid-cols-1 mx-auto my-auto bg-green-500 shadow-xl rounded p-4">
             <h1 className="font-sans font-medium text-lg justify-self-center">Playlists</h1>
             <ul>{elems}</ul>
         </div>
