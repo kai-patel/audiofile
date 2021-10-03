@@ -1,17 +1,55 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const Songs = ({ songs, playlists }) => {
-    const table = songs.map(({ track }, index) => (
+    const getBoxes = (track) => {
+        let boxes = [];
+        for (let i = 0; i < playlists.length; i++) {
+            const playlist = playlists[i];
+            // console.log(track.name, playlist.id, track.playlistID);
+            if (playlist.id === track.playlistID) {
+                boxes.push(
+                    <td
+                        className="border border-gray-800 text-center"
+                        key={track.name + playlist.id}
+                    >
+                        <input type="checkbox" checked={true} readOnly={true} />
+                    </td>
+                );
+            } else {
+                boxes.push(
+                    <td
+                        className="border border-gray-800 text-center"
+                        key={track.name + playlist.id}
+                    >
+                        <input
+                            type="checkbox"
+                            checked={false}
+                            readOnly={true}
+                        />
+                    </td>
+                );
+            }
+        }
+        return boxes;
+    };
+
+    let table = songs.map(({ track }, index) => (
         <tr key={index}>
             <td className="border border-gray-800 text-center">{track.name}</td>
             <td className="border border-gray-800 text-center">
                 {track.artists[0].name}
             </td>
+            {getBoxes(track)}
         </tr>
     ));
 
     const playlistHeaders = playlists.map((playlist, index) => (
-        <th className="border border-gray-800 text-center bg-green-200" key="index">{playlist.name}</th>
+        <th
+            className="border border-gray-800 text-center bg-green-200"
+            key={index}
+        >
+            {playlist.name}
+        </th>
     ));
 
     return (
