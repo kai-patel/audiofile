@@ -11,7 +11,7 @@ const Songs = ({ songs, playlists }) => {
     ));
 
     const playlistHeaders = playlists.map((playlist, index) => (
-        <th key="index">{playlist.name}</th>
+        <th className="border border-gray-800 text-center bg-green-200" key="index">{playlist.name}</th>
     ));
 
     return (
@@ -25,6 +25,7 @@ const Songs = ({ songs, playlists }) => {
                         <th className="border border-gray-800 text-center bg-green-300">
                             Artist
                         </th>
+                        {playlistHeaders}
                     </tr>
                 </thead>
                 <tbody>{table}</tbody>
