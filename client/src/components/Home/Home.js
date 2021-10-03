@@ -18,12 +18,16 @@ const Home = ({ code }) => {
     const [chosenPlaylists, setChosenPlaylists] = useState([]);
     const [songs, setSongs] = useState([]);
 
-    const handleCheckboxChange = (id) => () => {
-        if (chosenPlaylists.includes(id)) {
-            setChosenPlaylists(chosenPlaylists.filter((i) => i !== id));
-        } else {
-            setChosenPlaylists([...chosenPlaylists, id]);
+    const handleCheckboxChange = (newPlaylist) => () => {
+        for (let playlist of chosenPlaylists) {
+            if (playlist.id === newPlaylist.id) {
+                setChosenPlaylists(
+                    chosenPlaylists.filter((i) => i.id !== newPlaylist.id)
+                );
+                return;
+            }
         }
+        setChosenPlaylists([...chosenPlaylists, newPlaylist]);
     };
 
     const getTracks = async (id) => {
@@ -82,7 +86,7 @@ const Home = ({ code }) => {
         console.log("Chosen Playlists:", chosenPlaylists);
         setSongs([]);
         for (let playlist of chosenPlaylists) {
-            getTracks(playlist).then(
+            getTracks(playlist.id).then(
                 function (data) {
                     setSongs([...songs, ...data]);
                 },
@@ -107,16 +111,20 @@ const Home = ({ code }) => {
     if (!spotifyApi.getAccessToken()) return <h1>Not authenticated</h1>;
 
     return (
-        <div className="grid grid-cols-1 place-items-center w-screen h-screen mx-auto my-auto bg-gray-900">
-            <h1 className="font-sans font-medium text-xl bg-green-500 rounded-lg shadow-2xl py-2 px-4">Welcome {displayName}</h1>
-            <div className="container grid grid-cols-2 mx-auto my-auto">
+        <div className="grid grid-cols-1 place-items-center min-w-screen w-full min-h-screen h-full bg-gray-900">
+            <h1 className="font-sans font-medium text-xl bg-green-500 rounded-lg shadow-2xl my-2 py-2 px-4">
+                Welcome {displayName}
+            </h1>
+            <div className="container grid grid-cols-2 w-full h-full place-items-start">
                 {playlists ? (
                     <Playlists
                         playlists={playlists}
                         handleCheckboxChange={handleCheckboxChange}
                     />
                 ) : null}
-                {songs.length > 0 ? <Songs songs={songs} /> : null}
+                {songs.length > 0 ? (
+                    <Songs songs={songs} playlists={chosenPlaylists} />
+                ) : null}
             </div>
         </div>
     );

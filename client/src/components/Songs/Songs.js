@@ -1,6 +1,6 @@
 import React from "react";
 
-const Songs = ({ songs }) => {
+const Songs = ({ songs, playlists }) => {
     const table = songs.map(({ track }, index) => (
         <tr key={index}>
             <td className="border border-gray-800 text-center">{track.name}</td>
@@ -10,20 +10,26 @@ const Songs = ({ songs }) => {
         </tr>
     ));
 
+    const playlistHeaders = playlists.map((playlist, index) => (
+        <th key="index">{playlist.name}</th>
+    ));
+
     return (
-        <table className="bg-gray-300 shadow-inner border border-gray-700 p-4">
-            <thead>
-                <tr>
-                    <th className="border border-gray-800 text-center bg-green-500">
-                        Track
-                    </th>
-                    <th className="border border-gray-800 text-center bg-green-300">
-                        Artist
-                    </th>
-                </tr>
-            </thead>
-            <tbody>{table}</tbody>
-        </table>
+        <div className="container flex">
+            <table className="bg-gray-300 shadow-inner border border-gray-700">
+                <thead>
+                    <tr>
+                        <th className="border border-gray-800 text-center bg-green-500">
+                            Track
+                        </th>
+                        <th className="border border-gray-800 text-center bg-green-300">
+                            Artist
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>{table}</tbody>
+            </table>
+        </div>
     );
 };
 
