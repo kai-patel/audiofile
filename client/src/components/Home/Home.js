@@ -1,8 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import SpotifyWebApi from "spotify-web-api-node";
-import { Box, Grid, Typography } from "@material-ui/core";
 
 import useAuth from "../../hooks/useAuth.js";
 import Playlists from "../Playlists/Playlists.js";
@@ -109,37 +107,18 @@ const Home = ({ code }) => {
     if (!spotifyApi.getAccessToken()) return <h1>Not authenticated</h1>;
 
     return (
-        <Box mt={4}>
-            <Grid
-                container
-                spacing={4}
-                alignItems="center"
-                justifyContent="center"
-            >
-                <Grid item>
-                    <Typography variant="h4">Welcome {displayName}</Typography>
-                </Grid>
-                <Grid
-                    container
-                    item
-                    spacing={2}
-                    alignItems="flex-start"
-                    justifyContent="flex-start"
-                >
-                    <Grid item>
-                        {playlists ? (
-                            <Playlists
-                                playlists={playlists}
-                                handleCheckboxChange={handleCheckboxChange}
-                            />
-                        ) : null}
-                    </Grid>
-                    <Grid item>
-                        {songs.length > 0 ? <Songs songs={songs} /> : null}
-                    </Grid>
-                </Grid>
-            </Grid>
-        </Box>
+        <div className="grid grid-cols-1 place-items-center w-screen h-screen mx-auto my-auto bg-gray-900">
+            <h1 className="font-sans font-medium text-xl bg-green-500 rounded-lg shadow-2xl py-2 px-4">Welcome {displayName}</h1>
+            <div className="container grid grid-cols-2 mx-auto my-auto">
+                {playlists ? (
+                    <Playlists
+                        playlists={playlists}
+                        handleCheckboxChange={handleCheckboxChange}
+                    />
+                ) : null}
+                {songs.length > 0 ? <Songs songs={songs} /> : null}
+            </div>
+        </div>
     );
 };
 
