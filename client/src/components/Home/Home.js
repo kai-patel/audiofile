@@ -88,6 +88,9 @@ const Home = ({ code }) => {
         for (let playlist of chosenPlaylists) {
             getTracks(playlist.id).then(
                 function (data) {
+                    data.forEach((song) => {
+                        song.track.playlistID = playlist.id;
+                    });
                     setSongs([...songs, ...data]);
                 },
                 function (err) {
