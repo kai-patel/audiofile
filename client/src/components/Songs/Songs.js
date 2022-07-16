@@ -53,9 +53,9 @@ const Songs = ({ songs, playlists }) => {
     ));
 
     return (
-        <div className="container flex">
+        <div className="flex flex-col container overflow-y-scroll p-0">
             <table className="bg-gray-300 shadow-inner border border-gray-700">
-                <thead>
+                <thead className="sticky top-0">
                     <tr>
                         <th className="border border-gray-800 text-center bg-green-500">
                             Track
