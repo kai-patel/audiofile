@@ -118,7 +118,7 @@ const Home = ({ code }) => {
             <h1 className="font-sans font-medium text-xl bg-green-500 rounded-lg shadow-2xl my-2 py-2 px-4">
                 Welcome {displayName}
             </h1>
-            <div className="flex flex-row overflow-hidden bg-red-500 p-4">
+            <div className="flex flex-row overflow-hidden p-4">
                 {playlists ? (
                     <Playlists
                         playlists={playlists}
