@@ -2,6 +2,8 @@
 
 A playlist manager for Spotify
 
+![Showcase](https://user-images.githubusercontent.com/57713705/179369123-44828584-5ea1-4676-8fbf-5341b56f05fd.PNG)
+
 ## Development Status
 
 This project is still a **Work in Progress**
