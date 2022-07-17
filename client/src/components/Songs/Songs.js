@@ -53,7 +53,7 @@ const Songs = ({ songs, playlists }) => {
     ));
 
     return (
-        <div className="flex flex-col container overflow-y-scroll p-0">
+        <div className="flex flex-col container overflow-y-scroll border-green-900 border-2 p-0 shadow-lg">
             <table className="bg-gray-300 shadow-inner border border-gray-700">
                 <thead className="sticky top-0">
                     <tr>
