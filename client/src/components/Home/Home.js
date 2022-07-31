@@ -114,11 +114,13 @@ const Home = ({ code }) => {
     if (!spotifyApi.getAccessToken()) return <h1>Not authenticated</h1>;
 
     return (
-        <div className="flex flex-col w-screen h-screen overflow-hidden bg-gray-900">
-            <h1 className="font-sans font-medium text-xl bg-green-500 rounded-lg shadow-2xl my-2 py-2 px-4">
-                Welcome {displayName}
-            </h1>
-            <div className="flex flex-row overflow-hidden justify-around p-4">
+        <div className="flex flex-col w-screen h-screen bg-gray-900">
+            <div className="w-screen h-[10vh]">
+                <h1 className="font-sans font-medium text-xl bg-green-500 rounded-lg shadow-2xl my-2 py-2 px-4 max-h-full">
+                    Welcome {displayName}
+                </h1>
+            </div>
+            <div className="flex flex-row justify-around p-4 h-[90vh]">
                 {playlists ? (
                     <Playlists
                         playlists={playlists}
