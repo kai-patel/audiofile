@@ -69,27 +69,19 @@ const Home = () => {
                     getUser();
                     getUserPlaylists();
                     setInterval(() => {
-                        axios
-                            .get("http://localhost:5000/refresh/", {
-                                params: { code },
-                            })
-                            .then(
-                                function (res) {
-                                    spotifyApi.setAccessToken(
-                                        res.data.accessToken
-                                    );
-                                    spotifyApi.setRefreshToken(
-                                        res.data.refreshToken
-                                    );
-                                },
-                                function (err) {
-                                    console.error(
-                                        "Error refreshing access token",
-                                        err
-                                    );
-                                }
-                            );
-                    }, 10 * 1000);
+                        axios.get("http://localhost:5000/refresh/").then(
+                            function (res) {
+                                spotifyApi.setAccessToken(res.data.accessToken);
+                                console.log("Refreshed token!");
+                            },
+                            function (err) {
+                                console.error(
+                                    "Error refreshing access token",
+                                    err
+                                );
+                            }
+                        );
+                    }, res.data.expiresIn * 1000);
                 })
                 .catch((err) => {
                     console.error(err);

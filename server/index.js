@@ -34,6 +34,8 @@ app.get("/login", (req, res) => {
                 refreshToken: data.body.refresh_token,
                 expiresIn: data.body.expires_in,
             });
+            spotifyApi.setAccessToken(data.body.access_token);
+            spotifyApi.setRefreshToken(data.body.refresh_token);
         },
         (err) => {
             console.log("Could not authorize!");
@@ -42,6 +44,22 @@ app.get("/login", (req, res) => {
                 message: "Could not authorize",
                 error: err,
             });
+        }
+    );
+});
+
+// Handle token refresh
+app.get("/refresh", (req, res) => {
+    spotifyApi.refreshAccessToken().then(
+        function (data) {
+            console.log("The access token has been refreshed!");
+            spotifyApi.setAccessToken(data.body.access_token);
+            res.json({
+                accessToken: data.body.access_token,
+            });
+        },
+        function (err) {
+            console.log("Could not refresh access token", err);
         }
     );
 });
