@@ -2,7 +2,7 @@
 
 A playlist manager for Spotify
 
-![Showcase](https://user-images.githubusercontent.com/57713705/179369123-44828584-5ea1-4676-8fbf-5341b56f05fd.PNG)
+![Showcase](https://user-images.githubusercontent.com/57713705/184241082-c2b17ee1-7851-4586-a99b-85f9c39fc9a2.PNG)
 
 ## Development Status
 
@@ -21,9 +21,9 @@ This project is **functional**, but still a **Work in Progress**
 - [x] API
   - [x] Endpoint to handle authorization code flow
   - [x] Endpoint to handle token refreshing
-- [ ] Migration to Next.js
+- [x] Migration to Next.js
   - [x] Migrate client
-  - [ ] Migrate backend
+  - [x] Migrate backend
 
 ## Development Stack
 
@@ -32,3 +32,7 @@ This project is **functional**, but still a **Work in Progress**
 - Spotify Web API Node (<https://github.com/thelinmichael/spotify-web-api-node>)
 - ~~Material UI~~
 - Tailwind CSS
+
+## **Known Issues**
+
+- Songs common between playlists show up as separate listings (*this will be fixed soon*)
