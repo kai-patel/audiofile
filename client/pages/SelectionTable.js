@@ -1,6 +1,6 @@
-export function SelectionTable({
+export default function SelectionTable({
     loading,
-    userPlaylists,
+    userPlaylists = [],
     songsFromSelected,
     toggleSongCheckbox,
 }) {

@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 import SpotifyWebApi from "spotify-web-api-node";
 import axios from "axios";
 
-import { Welcome } from "./Welcome";
-import { PlaylistListItem } from "./PlaylistListItem";
-import { SelectionTable } from "./SelectionTable";
+import Welcome from "./Welcome";
+import PlaylistListItem from "./PlaylistListItem";
+import SelectionTable from "./SelectionTable";
 
 const spotifyApi = new SpotifyWebApi({
     clientId: "1a457bdb20ac4f9c81b53a9e37cb6568",

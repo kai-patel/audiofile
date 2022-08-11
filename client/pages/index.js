@@ -1,9 +1,8 @@
-import type { NextPage } from "next";
-
 const CLIENT_ID = "1a457bdb20ac4f9c81b53a9e37cb6568";
 const REDIRECT_URI = "http://localhost:3000/home";
 
-const scopes = "user-read-private playlist-modify-private playlist-read-private playlist-modify-public";
+const scopes =
+    "user-read-private playlist-modify-private playlist-read-private playlist-modify-public";
 
 const spotifyURI =
     "https://accounts.spotify.com/authorize" +
@@ -14,7 +13,7 @@ const spotifyURI =
     "&redirect_uri=" +
     encodeURIComponent(REDIRECT_URI);
 
-const Login: NextPage = () => {
+const Login = () => {
     return (
         <div className="flex flex-col justify-evenly place-items-center w-screen h-screen mx-0 my-0 bg-gray-900">
             <h1 className="text-green-500 text-8xl p-4 text-center font-bold bg-gradient-to-r from-green-900 to-gray-800 rounded-2xl shadow select-none">
