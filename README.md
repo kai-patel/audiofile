@@ -11,7 +11,7 @@ This project is **functional**, but still a **Work in Progress**
 - [x] User Auth
   - [x] Send user to Spotify to retrieve auth code
   - [x] Call API endpoint /authorize and retrieve tokens
-  - [ ] Handle token refreshing to prevent premature deauthentication
+  - [x] Handle token refreshing to prevent premature deauthentication
 - [x] UI
   - [x] Allow user to login
   - [x] Show user playlists
@@ -20,7 +20,7 @@ This project is **functional**, but still a **Work in Progress**
   - [x] Add songs between playlists
 - [x] API
   - [x] Endpoint to handle authorization code flow
-  - [ ] Endpoint to handle token refreshing
+  - [x] Endpoint to handle token refreshing
 - [ ] Migration to Next.js
   - [x] Migrate client
   - [ ] Migrate backend
