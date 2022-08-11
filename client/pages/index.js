@@ -1,5 +1,5 @@
 const CLIENT_ID = "1a457bdb20ac4f9c81b53a9e37cb6568";
-const REDIRECT_URI = "http://localhost:3000/home";
+const REDIRECT_URI = process.env.REDIRECT_URI;
 
 const scopes =
     "user-read-private playlist-modify-private playlist-read-private playlist-modify-public";
