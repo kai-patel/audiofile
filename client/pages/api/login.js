@@ -1,4 +1,4 @@
-import spotifyApi from "../../lib/APIObjectWrapper";
+import { spotifyApi } from "../../lib/APIObjectWrapper";
 
 export default function handler(req, res) {
     const token = req.query.code;
