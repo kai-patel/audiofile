@@ -58,7 +58,7 @@ const Home = () => {
         const getAccessToken = () => {
             console.log("Getting access token...", code);
             axios
-                .get("http://localhost:3000/login/", { params: { code } })
+                .get("http://localhost:3000/api/login/", { params: { code } })
                 .then((res) => {
                     console.log("Setting tokens");
                     console.log(res.data);
@@ -69,7 +69,7 @@ const Home = () => {
                     getUser();
                     getUserPlaylists();
                     setInterval(() => {
-                        axios.get("http://localhost:3000/refresh/").then(
+                        axios.get("http://localhost:3000/api/refresh/").then(
                             function (res) {
                                 spotifyApi.setAccessToken(res.data.accessToken);
                                 console.log("Refreshed token!");
