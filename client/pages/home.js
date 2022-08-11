@@ -63,10 +63,33 @@ const Home = () => {
                     console.log("Setting tokens");
                     console.log(res.data);
                     spotifyApi.setAccessToken(res.data.accessToken);
+                    spotifyApi.setRefreshToken(res.data.refreshToken);
                     setTokens(res.data);
                     window.history.pushState({}, "", "/home");
                     getUser();
                     getUserPlaylists();
+                    setInterval(() => {
+                        axios
+                            .get("http://localhost:5000/refresh/", {
+                                params: { code },
+                            })
+                            .then(
+                                function (res) {
+                                    spotifyApi.setAccessToken(
+                                        res.data.accessToken
+                                    );
+                                    spotifyApi.setRefreshToken(
+                                        res.data.refreshToken
+                                    );
+                                },
+                                function (err) {
+                                    console.error(
+                                        "Error refreshing access token",
+                                        err
+                                    );
+                                }
+                            );
+                    }, 10 * 1000);
                 })
                 .catch((err) => {
                     console.error(err);
