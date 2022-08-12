@@ -16,7 +16,7 @@ const spotifyURI =
 const Login = () => {
     return (
         <div className="flex flex-col justify-evenly place-items-center w-screen h-screen mx-0 my-0 bg-gray-900">
-            <h1 className="text-green-500 text-8xl p-4 text-center font-bold bg-gradient-to-r from-green-900 to-gray-800 rounded-2xl shadow select-none">
+            <h1 className="text-green-500 text-4xl sm:text-8xl p-4 text-center font-bold bg-gradient-to-r from-green-900 to-gray-800 rounded-2xl shadow select-none">
                 <a href="https://www.github.com/kai-patel/audiofile">
                     Audiofile
                 </a>
