@@ -102,7 +102,7 @@ const Home = () => {
                                 );
                             }
                         );
-                    }, res.data.expiresIn * 1000);
+                    }, res.data.expiresIn ? res.data.expiresIn * 1000 : 1000);
                 })
                 .catch((err) => {
                     console.error(err);
