@@ -57,11 +57,9 @@ export default function SelectionTable({
                                                 >
                                                     <input
                                                         type="checkbox"
-                                                        defaultChecked={
-                                                            song.track
-                                                                .playlistID ===
+                                                        defaultChecked={song.track.playlistID.includes(
                                                             playlist.id
-                                                        }
+                                                        )}
                                                         onChange={(e) =>
                                                             toggleSongCheckbox(
                                                                 e,

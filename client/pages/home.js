@@ -89,20 +89,27 @@ const Home = () => {
                     window.history.pushState({}, "", "/home");
                     getUser();
                     getUserPlaylists();
-                    setInterval(() => {
-                        axios.get("/api/refresh/").then(
-                            function (res) {
-                                spotifyApi.setAccessToken(res.data.accessToken);
-                                console.log("Refreshed token!");
-                            },
-                            function (err) {
-                                console.error(
-                                    "Error refreshing access token",
-                                    err
-                                );
-                            }
-                        );
-                    }, res.data.expiresIn ? res.data.expiresIn * 1000 : 1000);
+                    setInterval(
+                        () => {
+                            axios.get("/api/refresh/").then(
+                                function (res) {
+                                    spotifyApi.setAccessToken(
+                                        res.data.accessToken
+                                    );
+                                    console.log("Refreshed token!");
+                                },
+                                function (err) {
+                                    console.error(
+                                        "Error refreshing access token",
+                                        err
+                                    );
+                                }
+                            );
+                        },
+                        res.data.expiresIn
+                            ? res.data.expiresIn * 1000
+                            : 10 * 1000
+                    );
                 })
                 .catch((err) => {
                     console.error(err);
@@ -139,29 +146,38 @@ const Home = () => {
         };
 
         // Iterate through all selected playlists
-        const getSongsFromSelected = (selectedPlaylists) => {
+        const getSongsFromSelected = async (selectedPlaylists) => {
             let songs = [];
 
             if (selectedPlaylists.length === 0) {
                 setSongsFromSelected([]);
-                return;
+                return [];
             }
 
             for (let playlist of selectedPlaylists) {
-                getSongs(playlist.id).then(
-                    function (data) {
-                        data.forEach((song) => {
-                            song.track.playlistID = playlist.id;
-                        });
-                        songs = songs.concat(data);
-                        console.log("Songs", songs);
-                        setSongsFromSelected([...songs]);
-                    },
-                    function (err) {
-                        console.error("Error in getSongsFromSelected()", err);
+                let res = await getSongs(playlist.id);
+
+                let index = 0;
+                while (index < res.length) {
+                    let s = res[index];
+                    s.track.playlistID = [playlist.id];
+                    let dupe = songs.findIndex(
+                        (i) => i.track.name === s.track.name
+                    );
+                    if (dupe > -1) {
+                        songs[dupe].track.playlistID = songs[
+                            dupe
+                        ].track.playlistID.concat(s.track.playlistID);
+                        res.splice(index, 1);
+                        index--;
                     }
-                );
+                    index++;
+                }
+
+                songs = songs.concat(res);
             }
+
+            return [...songs];
         };
 
         let selectedPlaylists = [...userPlaylists];
@@ -170,7 +186,16 @@ const Home = () => {
         );
 
         console.log("Selected", selectedPlaylists);
-        getSongsFromSelected(selectedPlaylists);
+        getSongsFromSelected(selectedPlaylists).then(
+            function (data) {
+                setSongsFromSelected([...data]);
+                console.log("Songs", data);
+            },
+            function (err) {
+                setSongsFromSelected([]);
+                console.error("Error in getSongsFromSelected()", err);
+            }
+        );
     }, [userPlaylists]);
 
     // On-click toggle whether playlist is selected
