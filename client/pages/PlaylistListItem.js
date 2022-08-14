@@ -5,11 +5,12 @@ export default function PlaylistListItem({
     playlist,
     userID,
 }) {
-    return userPlaylists[index].collaborative ||
-        userPlaylists[index].owner.id === userID ? (
+    return userPlaylists.length > 0 &&
+        (userPlaylists[index].collaborative ||
+            userPlaylists[index].owner.id === userID) ? (
         <button
             className={`flex flex-row text-left items-center w-full justify-evenly p-2.5 min-h-min border-b-[1px] border-b-black hover:bg-green-300 hover:transition-colors ${
-                userPlaylists.length > 0 && userPlaylists[index].selected
+                userPlaylists[index].selected
                     ? "bg-green-400"
                     : "bg-green-500"
             }`}
