@@ -280,6 +280,7 @@ const Home = () => {
                                           togglePlaylistSelected
                                       }
                                       playlist={playlist}
+                                      userID={user.userID}
                                       key={index}
                                   />
                               );

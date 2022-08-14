@@ -3,11 +3,15 @@ export default function PlaylistListItem({
     index = 0,
     togglePlaylistSelected,
     playlist,
+    userID,
 }) {
-    return (
+    return userPlaylists[index].collaborative ||
+        userPlaylists[index].owner.id === userID ? (
         <button
             className={`flex flex-row text-left items-center w-full justify-evenly p-2.5 min-h-min border-b-[1px] border-b-black hover:bg-green-300 hover:transition-colors ${
-                userPlaylists.length > 0 && userPlaylists[index].selected ? "bg-green-400" : "bg-green-500"
+                userPlaylists.length > 0 && userPlaylists[index].selected
+                    ? "bg-green-400"
+                    : "bg-green-500"
             }`}
             key={index}
             onClick={() => togglePlaylistSelected(playlist)}
@@ -18,5 +22,5 @@ export default function PlaylistListItem({
                 src={playlist && playlist.images[0]?.url}
             />
         </button>
-    );
+    ) : null;
 }
