@@ -28,7 +28,7 @@ This project is **functional**, but still a **Work in Progress**
 ## Development Stack
 
 - ~~React~~ **Now Next.js**
-- Express
+- ~~Express~~
 - Spotify Web API Node (<https://github.com/thelinmichael/spotify-web-api-node>)
 - ~~Material UI~~
 - Tailwind CSS
