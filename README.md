@@ -35,4 +35,4 @@ This project is **functional**, but still a **Work in Progress**
 
 ## **Known Issues**
 
-- Songs common between playlists show up as separate listings (*this will be fixed soon*)
+- Please see the [Issues](<https://github.com/kai-patel/audiofile/issues>) section on GitHub
