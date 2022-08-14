@@ -41,16 +41,37 @@ const Home = () => {
 
         const getUserPlaylists = () => {
             if (!user || !spotifyApi.getAccessToken()) return;
-            spotifyApi.getUserPlaylists(user.userID).then(
+
+            (async function () {
+                let lists = [];
+                let total = 0;
+                let offset = 0;
+                let data = await spotifyApi.getUserPlaylists(user.userID);
+                total = data.body.total;
+                lists.push(...data.body.items);
+
+                while (lists.length < total) {
+                    offset += 20;
+                    let data = await spotifyApi.getUserPlaylists(user.userID, {
+                        offset,
+                    });
+                    lists.push(...data.body.items);
+                }
+                return lists;
+            })().then(
                 function (data) {
-                    let items = data.body.items;
+                    console.log(data);
+                    let items = data;
                     items.forEach((item) => {
                         item.selected = false;
                     });
                     setUserPlaylists(items);
                 },
                 function (err) {
-                    console.error("Error in getUserPlaylists()", err);
+                    console.error(
+                        "Error getting all user playlists (immediate pagination fn)",
+                        err
+                    );
                 }
             );
         };
